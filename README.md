@@ -7,6 +7,6 @@ Prerequisites - Please make sure to create a S3 bucket named as "dask-tf-remote-
 
 2. Then move to Eks directory and replace default values of VPC and Subnet variables with the values you got from step 1.
 
-3. After you replace VPC IC / Subnet IDs you can run "terraform apply" to create the EKS Cluster.
+3. After you replace VPC IC / Subnet IDs you can run "terraform init" then "terraform apply --auto-approve" to create the EKS Cluster.
 
 4. To destroy the cluster simply run "terraform destroy" inside Eks directory again.

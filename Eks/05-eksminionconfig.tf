@@ -42,6 +42,8 @@ resource "aws_autoscaling_group" "eks-minion-asg" {
   max_size             = 2
   min_size             = 1
   name                 = "eks-minion-asg"
+  spot_max_price       = "${var.dask-worker-price}"
+  spot_allocation_strategy  = "lowest-price"
   vpc_zone_identifier  = ["${data.aws_subnet.eks-private-subnet-01.id}","${data.aws_subnet.eks-private-subnet-02.id}","${data.aws_subnet.eks-private-subnet-03.id}"]
 
   tag {

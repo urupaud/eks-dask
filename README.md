@@ -1,7 +1,7 @@
 # eks-dask
 Dask running on EKS cluster
 
-Prerequistst - Please make sure to create a S3 bucket named as "dask-tf-remote-state-storage"  & dynamodb table as "terraform-state-lock-dynamo" with 
+Prerequistst - Please make sure to create a S3 bucket named as "dask-tf-remote-state-storage"  & dynamodb table as "terraform-state-lock-dynamo" with LockID as partition key. 
 
 1. First move to Vpc directory and run "terraform init" then "terraform apply --auto-approve" to create the VPC. Once the VPC created you'll get the VPC ID and subnet IDs.
 

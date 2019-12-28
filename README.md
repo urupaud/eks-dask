@@ -1,7 +1,11 @@
 # eks-dask
-Dask running on EKS cluster
+Dask running on EKS cluster with SPOT instances.
 
 Prerequisites - Please make sure to create a S3 bucket named as "dask-tf-remote-state-storage" & dynamodb table as "terraform-state-lock-dynamo" with LockID as partition key. 
+
+Before executin please go through variables.tf of both Eks and Vpc directories, there you'll be able to see the variables that we should pass to create the VPC and EKS cluster. 
+
+eg - to set a SPOT instance max price change the value of Eks/variables.tf -> dask-worker-price.
 
 1. First move to Vpc directory and followings,
 

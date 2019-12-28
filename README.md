@@ -19,6 +19,8 @@ $ docker run -i -t -v ${absolute_path_to_Eks_dir}:/Eks --net=host -w /Eks --env 
 
 $ docker run -i -t -v ${absolute_path_to_Eks_dir}:/Eks --net=host -w /Eks --env AWS_ACCESS_KEY_ID="XXXX" --env AWS_SECRET_ACCESS_KEY="YYYY" -t hashicorp/terraform:light apply
 
+Upon successfull creation dask helm charts will be creating two classic loadbalancers to access dask jupyter and dask scheduler.
+
 4. To destroy the cluster simply run followings inside Eks directory,
 
 Make sure to destroy helm release first using the following command, this is due to a bug with terraform helm provider (https://github.com/terraform-providers/terraform-provider-helm/issues/315 / https://github.com/hashicorp/terraform/issues/21008)
@@ -28,5 +30,3 @@ $ docker run -i -t -v ${absolute_path_to_Eks_dir}:/Eks --net=host -w /Eks --env 
 After successfull deletion of helm release , then run destroy as below.
 
 $ docker run -i -t -v ${absolute_path_to_Eks_dir}:/Eks --net=host -w /Eks --env AWS_ACCESS_KEY_ID="XXXX" --env AWS_SECRET_ACCESS_KEY="YYYY" -t hashicorp/terraform:light destroy
-
-Upon successfull creation dask helm charts will be creating two classic loadbalancers to access dask jupyter and dask scheduler.

@@ -37,7 +37,7 @@ resource "aws_security_group" "eks-minion-sg" {
 }
 	
 resource "aws_security_group_rule" "eks-master-sg-ingress-workstation-https" {
-  cidr_blocks       = ["80.235.88.105/32"]
+  cidr_blocks       = ["0.0.0.0/0"]
   description       = "Allow workstation to communicate with the cluster API Server."
   from_port         = 443
   protocol          = "tcp"

@@ -33,7 +33,7 @@ resource "aws_launch_configuration" "eks-minion-lc" {
     create_before_destroy = true
   }
 
-  depends_on = [aws_iam_role.dask-eks-minion-iam-role]
+  depends_on = [aws_iam_instance_profile.dask-eks-minion-iam-role, aws_security_group.eks-minion-sg]
 }
 
 resource "aws_autoscaling_group" "eks-minion-asg" {
@@ -42,8 +42,6 @@ resource "aws_autoscaling_group" "eks-minion-asg" {
   max_size             = 2
   min_size             = 1
   name                 = "eks-minion-asg"
-  spot_max_price       = "${var.dask-worker-price}"
-  spot_allocation_strategy  = "lowest-price"
   vpc_zone_identifier  = ["${data.aws_subnet.eks-private-subnet-01.id}","${data.aws_subnet.eks-private-subnet-02.id}","${data.aws_subnet.eks-private-subnet-03.id}"]
 
   tag {
@@ -57,4 +55,6 @@ resource "aws_autoscaling_group" "eks-minion-asg" {
     value               = "owned"
     propagate_at_launch = true
   }
+
+  depends_on = [aws_launch_configuration.eks-minion-lc]
 }

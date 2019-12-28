@@ -31,6 +31,6 @@ resource "aws_eks_cluster" "eks-cluster" {
     subnet_ids         = ["${data.aws_subnet.eks-public-subnet-01.id}","${data.aws_subnet.eks-public-subnet-02.id}","${data.aws_subnet.eks-public-subnet-03.id}","${data.aws_subnet.eks-private-subnet-01.id}","${data.aws_subnet.eks-private-subnet-02.id}","${data.aws_subnet.eks-private-subnet-03.id}"]
   } 
   
-  depends_on = [aws_iam_role.dask-eks-master-iam-role]
+  depends_on = [aws_iam_role.dask-eks-master-iam-role, aws_security_group.eks-master-sg]
 
 }

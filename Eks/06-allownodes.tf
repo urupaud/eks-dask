@@ -1,9 +1,9 @@
 #this need helm to talk with tiller in eks cluster
 
 provider "kubernetes" {
-  host                      = "${aws_eks_cluster.eks-cluster.endpoint}"
-  cluster_ca_certificate    = "${base64decode(aws_eks_cluster.eks-cluster.certificate_authority.0.data)}"
-  token                     = "${data.aws_eks_cluster_auth.dask-eks.token}"
+  host                      = aws_eks_cluster.eks-cluster.endpoint
+  cluster_ca_certificate    = base64decode(aws_eks_cluster.eks-cluster.certificate_authority.0.data)
+  token                     = data.aws_eks_cluster_auth.dask-eks.token
   load_config_file          = false
   version = "~> 1.5"
 }
@@ -14,7 +14,7 @@ resource "null_resource" "delay" {
   }
 
   triggers = {
-    "before" = "${aws_eks_cluster.eks-cluster.id}"
+    "before" = aws_eks_cluster.eks-cluster.id
   }
 }
 

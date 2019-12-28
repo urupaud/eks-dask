@@ -45,5 +45,10 @@ variable "dask-worker-price" {
 
 variable "cluster-name" {
   default = "dask-eks-cluster"
-  type    = "string"
+  type    = string
+}
+
+variable "public_key" {
+  description = "public key"
+  default     = ""
 }

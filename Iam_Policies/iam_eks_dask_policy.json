@@ -1,0 +1,52 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GenerateCredentialReport",
+                "iam:GetAccountPasswordPolicy",
+                "iam:GetServiceLastAccessedDetailsWithEntities",
+                "iam:ListServerCertificates",
+                "iam:GenerateServiceLastAccessedDetails",
+                "iam:ListPoliciesGrantingServiceAccess",
+                "iam:GetServiceLastAccessedDetails",
+                "iam:ListVirtualMFADevices",
+                "iam:GetOrganizationsAccessReport",
+                "iam:SetSecurityTokenServicePreferences",
+                "iam:SimulateCustomPolicy",
+                "iam:CreateAccountAlias",
+                "iam:GetAccountAuthorizationDetails",
+                "iam:DeleteAccountAlias",
+                "iam:GetCredentialReport",
+                "iam:ListPolicies",
+                "iam:DeleteAccountPasswordPolicy",
+                "iam:ListSAMLProviders",
+                "iam:ListRoles",
+                "iam:GetContextKeysForCustomPolicy",
+                "iam:UpdateAccountPasswordPolicy",
+                "iam:ListOpenIDConnectProviders",
+                "iam:ListAccountAliases",
+                "iam:ListUsers",
+                "iam:ListGroups",
+                "iam:GetAccountSummary"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "iam:*",
+            "Resource": [
+                "arn:aws:iam::Aws_Account_Id:role/dask-eks-master-iam-role",
+                "arn:aws:iam::Aws_Account_Id:role/dask-eks-minion-iam-role",
+                "arn:aws:iam::Aws_Account_Id:policy/AmazonEKSWorkerNodePolicy",
+                "arn:aws:iam::Aws_Account_Id:policy/AmazonEKS_CNI_Policy",
+                "arn:aws:iam::Aws_Account_Id:policy/AmazonEC2ContainerRegistryReadOnly",
+                "arn:aws:iam::Aws_Account_Id:instance-profile/dask-eks-minion-iam-role",
+                "arn:aws:iam::Aws_Account_Id:instance-profile/dask-eks-master-iam-role"
+            ]
+        }
+    ]
+}

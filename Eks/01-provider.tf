@@ -1,3 +1,3 @@
 provider "aws" {
-  region = "${var.eks-region}"
+  region = var.eks-region
 }

@@ -1,9 +1,14 @@
 # eks-dask
 Dask running on EKS cluster with SPOT instances.
 
-Prerequisites - Please make sure to create a S3 bucket named as "dask-tf-remote-state-storage" & dynamodb table as "terraform-state-lock-dynamo" with LockID as partition key. 
+You'll need AWS permissions as follows,
 
-Before executin please go through variables.tf of both Eks and Vpc directories, there you'll be able to see the variables that we should pass to create the VPC and EKS cluster. 
+ - AmazonEKSAdminPolicy - Create this policy with json which is in Iam_Policies/iam_eks_admin_policy.json
+ - IamEksDaskPolicy - Create this with json which is in Iam_Policies/iam_eks_dask_policy.json
+ - AmazonEC2FullAccess - You can find this policy in you account by default.
+ - AmazonVPCFullAccess - You can find this policy in you account by default.
+
+Before executing please go through variables.tf of both Eks and Vpc directories, there you'll be able to see the variables that we should pass to create the VPC and EKS cluster. 
 
 eg - to set a SPOT instance max price change the value of Eks/variables.tf -> dask-worker-price.
 

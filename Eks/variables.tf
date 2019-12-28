@@ -38,6 +38,11 @@ variable "eks-private-subnet-03" {
   default     = "subnet-0dccc57d0a0e7ca71"
 }
 
+variable "instance-type" {
+  description = "ec2 instance type for eks"
+  default     = "t3.small"
+}
+
 variable "dask-worker-price" {
   description = "spot instace price"
   default     = "0.0062"
@@ -48,7 +53,7 @@ variable "cluster-name" {
   type    = string
 }
 
-variable "public_key" {
-  description = "public key"
+variable "key-name" {
+  description = "keypair name"
   default     = ""
 }

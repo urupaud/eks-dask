@@ -10,11 +10,6 @@ data "aws_ami" "eks-worker" {
 
 data "aws_region" "current" {}
 
-resource "aws_key_pair" "dask-key" {
-  key_name   = "eks-dask"
-  public_key = "${var.public_key}"
-}
-
 locals {
   eks-minion-userdata = <<USERDATA
 #!/bin/bash
@@ -27,10 +22,10 @@ resource "aws_launch_configuration" "eks-minion-lc" {
   associate_public_ip_address = false
   iam_instance_profile        = aws_iam_instance_profile.dask-eks-minion-iam-role.name
   image_id                    = data.aws_ami.eks-worker.id
-  instance_type               = "t3.small"
+  instance_type               = var.instance-type
   spot_price                  = var.dask-worker-price
   name_prefix                 = "eks-minion-lc"
-  key_name                    = aws_key_pair.dask-key.key_name
+  key_name                    = var.key-name
   security_groups             = [aws_security_group.eks-minion-sg.id]
   user_data_base64            = base64encode(local.eks-minion-userdata)
 

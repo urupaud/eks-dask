@@ -4,7 +4,7 @@ Dask running on EKS cluster with SPOT instances.
 You'll need AWS permissions as follows,
 
  - AmazonEKSAdminPolicy - Create this policy with json which is in Iam_Policies/iam_eks_admin_policy.json
- - IamEksDaskPolicy - Create this with json which is in Iam_Policies/iam_eks_dask_policy.json
+ - IamEksDaskPolicy - Create this with json which is in Iam_Policies/iam_eks_dask_policy.json, remember to replace Aws_Account_Id with your AWS account ID.
  - AmazonEC2FullAccess - You can find this policy in you account by default.
  - AmazonVPCFullAccess - You can find this policy in you account by default.
 
